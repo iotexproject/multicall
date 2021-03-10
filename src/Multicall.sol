@@ -4,30 +4,29 @@ pragma experimental ABIEncoderV2;
 /// @title Multicall - Aggregate results from multiple read-only function calls
 
 contract Multicall {
-    struct Call {
-        address target;
-        bytes callData;
-    }
-    function aggregate(Call[] memory calls) public returns (uint256 blockNumber, bytes[] memory returnData) {
+    function aggregate(address[] calldata contracts, bytes[] calldata bytecodes) public returns (uint256 blockNumber, bytes[] memory returnData) {
+        require(contracts.length == bytecodes.length, "parameters should be of the same length");
         blockNumber = block.number;
-        returnData = new bytes[](calls.length);
-        for(uint256 i = 0; i < calls.length; i++) {
-            (bool success, bytes memory ret) = calls[i].target.call(calls[i].callData);
+        returnData = new bytes[](contracts.length);
+        for(uint256 i = 0; i < contracts.length; i++) {
+            (bool success, bytes memory ret) = contracts[i].call(bytecodes[i]);
             require(success);
             returnData[i] = ret;
         }
     }
 
-    function batch(Call[] memory calls) public returns (uint256 blockNumber, bool[] memory result, bytes[] memory returnData) {
+    function batch(address[] calldata contracts, bytes[] calldata bytecodes) public returns (uint256 blockNumber, bool[] memory result, bytes[] memory returnData) {
+        require(contracts.length == bytecodes.length, "parameters should be of the same length");
         blockNumber = block.number;
-        result = new bool[](calls.length);
-        returnData = new bytes[](calls.length);
-        for(uint256 i = 0; i < calls.length; i++) {
-            (bool success, bytes memory ret) = calls[i].target.call(calls[i].callData);
+        result = new bool[](contracts.length);
+        returnData = new bytes[](contracts.length);
+        for(uint256 i = 0; i < contracts.length; i++) {
+            (bool success, bytes memory ret) = contracts[i].call(bytecodes[i]);
             result[i] = success;
             returnData[i] = ret;
         }
     }
+
     // Helper functions
     function getEthBalance(address addr) public view returns (uint256 balance) {
         balance = addr.balance;
