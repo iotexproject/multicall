@@ -4,7 +4,7 @@ pragma experimental ABIEncoderV2;
 /// @title Multicall - Aggregate results from multiple read-only function calls
 
 contract Multicall {
-    function aggregate(address[] calldata contracts, bytes[] calldata bytecodes) public returns (uint256 blockNumber, bytes[] memory returnData) {
+    function aggregate(address[] memory contracts, bytes[] memory bytecodes) public returns (uint256 blockNumber, bytes[] memory returnData) {
         require(contracts.length == bytecodes.length, "parameters should be of the same length");
         blockNumber = block.number;
         returnData = new bytes[](contracts.length);
@@ -15,7 +15,7 @@ contract Multicall {
         }
     }
 
-    function batch(address[] calldata contracts, bytes[] calldata bytecodes) public returns (uint256 blockNumber, bool[] memory result, bytes[] memory returnData) {
+    function batch(address[] memory contracts, bytes[] memory bytecodes) public returns (uint256 blockNumber, bool[] memory result, bytes[] memory returnData) {
         require(contracts.length == bytecodes.length, "parameters should be of the same length");
         blockNumber = block.number;
         result = new bool[](contracts.length);
