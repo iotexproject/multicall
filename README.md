@@ -15,5 +15,5 @@ For use in front-end dapps, this smart contract is intended to be used with
 ### Contract Addresses
 | Chain   | Address |
 | ------- | ------- |
-| Mainnet | [io14n8zjjlh6f0733wxftj9r97ns78ksspmjgzh7e](https://iotexscan.io/address/io14n8zjjlh6f0733wxftj9r97ns78ksspmjgzh7e) |
-| Testnet | [io10er932sspsw4lpwzx098zd3zhkjmdnn9f5n22z](https://testnet.iotexscan.io/address/io10er932sspsw4lpwzx098zd3zhkjmdnn9f5n22z) |
+| Mainnet | <s>io14n8zjjlh6f0733wxftj9r97ns78ksspmjgzh7e</s>[io1g7cep0agseugchuhfvjwry5cpwufwvkekqmvtv](https://iotexscan.io/address/io1g7cep0agseugchuhfvjwry5cpwufwvkekqmvtv) |
+| Testnet | <s>io10er932sspsw4lpwzx098zd3zhkjmdnn9f5n22z</s>[io1xkvdfhpeelmtux607fjqzfml0vkjut4g3h4pud](https://testnet.iotexscan.io/address/io1xkvdfhpeelmtux607fjqzfml0vkjut4g3h4pud) |
